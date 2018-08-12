@@ -1,3 +1,59 @@
-<p>
-  admin works!
-</p>
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">wowTow All Employers</h4>
+                <h6 class="card-subtitle">All employers for wowTow includes tow profile and status</h6>
+                <div class="table-responsive">
+                    <table class="table color-table warning-table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Status</th>
+                                <th>Work mode</th>
+                                <th>Authorization</th>
+                                <th>Profile</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let emp of Employers; let i = index;">
+                                <td> {{ i+1 }} </td>
+                                <td> {{ emp.driver_name }} </td>
+                                <td> {{ emp.driver_email }} </td>
+                                <td *ngIf="emp.driver_status">
+                                    <span class="badge badge-success"> VERIFIED </span>
+                                </td>
+                                <td *ngIf="!emp.driver_status">
+                                    <span class="badge badge-danger"> 
+                                    NOT VERIFIED </span>
+                                </td>
+                                <td *ngIf="emp.driver_working">
+                                    <span class="badge badge-success"> WORKING </span>
+                                </td>
+                                <td *ngIf="!emp.driver_working">
+                                    <span class="badge badge-danger"> 
+                                  NOT WORKING </span>
+                                </td>
+                                <td *ngIf="emp.driver_working">
+                                    <span class="badge badge-success"> LEGAL VERIFIED </span>
+                                </td>
+                                <td *ngIf="!emp.driver_working">
+                                    <span class="badge badge-danger"> 
+                                      NOT AUTHORIZED
+                               </span>
+                                </td>
+                                <td>
+                                    <button (click)="navigateProfile(emp.tow_id)" class="btn btn-success">
+                                      <i class="mdi mdi-truck-trailer"></i>
+                                  </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -9,13 +9,14 @@ import { PaypalComponent } from './pages/paypal/paypal.component';
 import { StripeComponent } from './pages/stripe/stripe.component';
 import { CouponsComponent } from './pages/cities/coupons/coupons.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
-import { HttpClientModule } from '@angular/common/http';
 import { EmployersComponent } from './pages/employers/employers.component';
 import { PagesRoutingModule } from './pages.routes';
+import { CustomersComponent } from './pages/customers/customers.component';
+import { ProfileComponent } from './pages/customers/profile.component';
+import { ProfileDriverComponent } from './pages/admin/profile-driver.component';
 @NgModule({
   imports: [
     CommonModule,
-    HttpClientModule,
     PagesRoutingModule
   ],
   declarations: [
@@ -28,7 +29,10 @@ import { PagesRoutingModule } from './pages.routes';
   StripeComponent,
   CouponsComponent,
   DashboardComponent,
-  EmployersComponent
+  EmployersComponent,
+  CustomersComponent,
+  ProfileComponent,
+  ProfileDriverComponent
 ]
 })
 export class PagesModule { }
