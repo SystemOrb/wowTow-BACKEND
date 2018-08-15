@@ -1,3 +1,43 @@
-<p>
-  risk works!
-</p>
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">wowTow Risk Control Customers</h4>
+                <h6 class="card-subtitle"></h6>
+                <div class="table-responsive">
+                    <table class="table color-table warning-table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Customer</th>
+                                <th>Email</th>
+                                <th>AVERAGE</th>
+                                <th>Risk Status</th>
+                                <th>Date</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let r of Risk; let i = index;">
+                                <td> {{ i+1 }} </td>
+                                <td> {{ r.car_model.client.name }} </td>
+                                <td> {{ r.car_model.client.email }} </td>
+                                <td> <span [innerHTML]="r.risk_average | average"></span> </td>
+                                <td> <span [innerHTML]="r.risk_status | status:'Complete':'not Reviewed'"></span> </td>
+                                <td> {{ r.risk_date }} </td>
+                                <td>
+                                    <button (click)="navigate(r._id)" class="btn btn-success">
+                                      <i class="mdi mdi-car-connected"></i>
+                                  </button>
+                                    <button (click)="confirmation(r._id, i)" style="margin-left: 5px" class="btn btn-danger">
+                                    <i class="fa fa-trash"></i>
+                                  </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

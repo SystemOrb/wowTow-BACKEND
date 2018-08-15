@@ -13,6 +13,7 @@ import { PaypalComponent } from './pages/paypal/paypal.component';
 import { CustomersComponent } from './pages/customers/customers.component';
 import { ProfileComponent } from './pages/customers/profile.component';
 import { ProfileDriverComponent } from './pages/admin/profile-driver.component';
+import { RiskInfoComponent } from './pages/risk/risk-info.component';
 
 const routes: Routes = [
     {path: 'dashboard', component: DashboardComponent},
@@ -24,6 +25,7 @@ const routes: Routes = [
     {path: 'admin/membership', component: EmployersComponent, data: {title: 'Employers management'}},
     {path: 'admin/cities', component: CitiesComponent, data: {title: 'Cities management'}},
     {path: 'admin/controls/risk', component: RiskComponent, data: {title: 'Controls Risks'}},
+    {path: 'admin/controls/risk/:riskKey', component: RiskInfoComponent, data: {title: 'Control Risk'}},
     {path: 'admin/payments/stripe', component: StripeComponent, data: {title: 'Payments with stripe'}},
     {path: 'admin/payments/paypal', component: PaypalComponent, data: {title: 'Payments with Paypal'}},
     { path: '', pathMatch: 'full', redirectTo: '/dashboard' }

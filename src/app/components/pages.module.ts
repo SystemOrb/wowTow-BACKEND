@@ -14,10 +14,16 @@ import { PagesRoutingModule } from './pages.routes';
 import { CustomersComponent } from './pages/customers/customers.component';
 import { ProfileComponent } from './pages/customers/profile.component';
 import { ProfileDriverComponent } from './pages/admin/profile-driver.component';
+import { AveragePipe } from '../services/pipes/average.pipe';
+import { StatusPipe } from '../services/pipes/status.pipe';
+import { RiskInfoComponent } from './pages/risk/risk-info.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   imports: [
     CommonModule,
-    PagesRoutingModule
+    PagesRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   declarations: [
   LoginComponent,
@@ -32,7 +38,10 @@ import { ProfileDriverComponent } from './pages/admin/profile-driver.component';
   EmployersComponent,
   CustomersComponent,
   ProfileComponent,
-  ProfileDriverComponent
+  ProfileDriverComponent,
+  AveragePipe,
+  StatusPipe,
+  RiskInfoComponent
 ]
 })
 export class PagesModule { }
