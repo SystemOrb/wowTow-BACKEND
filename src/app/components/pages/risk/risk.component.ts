@@ -1,17 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { RiskService } from '../../../services/customers/risk.service';
 import { RiskControl } from '../../../classes/customers/customer.risk.class';
-import swal from 'sweetalert';
 import { Router } from '@angular/router';
-
+import swal from 'sweetalert';
+// declare const swal: any;
 @Component({
   selector: 'app-risk',
   templateUrl: './risk.component.html',
   styles: []
 })
 export class RiskComponent implements OnInit {
-  public Risk: RiskControl[] | any[] = [];
-  toHTML: HTMLDocument;
+  public Risk: RiskControl[] | any = [];
   constructor(private _risk: RiskService, private _router: Router) { }
   async ngOnInit() {
     this.Risk = await this.UploadTableRisk();
@@ -25,7 +24,7 @@ export class RiskComponent implements OnInit {
               throw new Error('Failure to connect with database server');
             }
             const ArrayControl: RiskControl[] = new Array();
-            for (const warning of Risk.dataTransfer) {
+            for (const warning of Risk.AllData) {
               ArrayControl.push(warning);
             }
             resolve(ArrayControl);
@@ -38,15 +37,18 @@ export class RiskComponent implements OnInit {
   }
   confirmation(riskKey: string, index: number) {
     swal({
-      title: 'Are you sure?',
-      text: 'Are you sure that you want to delete this Risk Control?',
+      title: 'Remove Risk Control',
+      text: 'Are you sure? This action cannot be undone',
       icon: 'warning',
+      buttons: true,
       dangerMode: false,
     })
-    .then(async willDelete => {
-      const deleted = await this.RemoveControl(riskKey, index);
-      if (willDelete && deleted) {
-        swal('Operation Successfully!', 'Your Risk Control has been deleted!', 'success');
+    .then(async (willDelete) => {
+      if (willDelete) {
+        const rm = await this.RemoveControl(riskKey, index);
+        if (!rm) {
+          this.Risk.splice(index, 1);
+        }
       }
     });
   }
@@ -56,7 +58,6 @@ export class RiskComponent implements OnInit {
         this._risk.removeRisk(RiskKey).subscribe(
           (Risk: any) => {
             if (Risk.status) {
-              this.Risk.splice(index, 1);
               resolve(true);
             } else {
               resolve(false);

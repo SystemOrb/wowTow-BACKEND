@@ -9,11 +9,17 @@ import { Router } from '@angular/router';
   styles: []
 })
 export class HeaderComponent implements OnInit {
-  public Risk: RiskControl[] | any[] = [];
+  public Risk: RiskControl[] | any = [];
+  public displayControlWarning: boolean;
   constructor(private _risk: RiskService) { }
 
   async ngOnInit() {
     this.Risk = await this.UploadTableRisk();
+    if (!this.Risk.length) {
+      this.displayControlWarning = false;
+    } else {
+      this.displayControlWarning = true;
+    }
   }
   UploadTableRisk(): Promise<RiskControl[]> {
     return new Promise((resolve, reject) => {
@@ -24,7 +30,7 @@ export class HeaderComponent implements OnInit {
               throw new Error('Failure to connect with database server');
             }
             const ArrayControl: RiskControl[] = new Array();
-            for (const warning of Risk.dataTransfer) {
+            for (const warning of Risk.AllData) {
               ArrayControl.push(warning);
             }
             resolve(ArrayControl);

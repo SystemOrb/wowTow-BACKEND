@@ -28,7 +28,7 @@ export class RiskInfoComponent implements OnInit {
           if (!Risk.status) {
             throw new Error('Failure to load this Risk Control, please try later ' + Risk.err);
           }
-          resolve(Risk.dataTransfer);
+          resolve(Risk.AllData);
         }
       );
     });
@@ -46,7 +46,6 @@ export class RiskInfoComponent implements OnInit {
             if (!Risk.status) {
               reject(Risk.err);
             }
-            console.log(Risk);
             if (Risk.Risk.risk_status) {
               swal('Operation Successfully', 'This Risk Control has been closed for administration', 'success');
             } else {

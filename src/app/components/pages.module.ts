@@ -18,6 +18,8 @@ import { AveragePipe } from '../services/pipes/average.pipe';
 import { StatusPipe } from '../services/pipes/status.pipe';
 import { RiskInfoComponent } from './pages/risk/risk-info.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ImageUrlPipe } from '../services/pipes/image-url.pipe';
+import { LegalPageComponent } from './pages/legal/legal-page.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -41,7 +43,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   ProfileDriverComponent,
   AveragePipe,
   StatusPipe,
-  RiskInfoComponent
+  ImageUrlPipe,
+  RiskInfoComponent,
+  LegalPageComponent
 ]
 })
 export class PagesModule { }

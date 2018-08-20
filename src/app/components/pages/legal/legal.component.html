@@ -1,3 +1,48 @@
-<p>
-  legal works!
-</p>
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">wowTow Service Providers Documents & Privacy</h4>
+                <h6 class="card-subtitle"></h6>
+                <div class="table-responsive">
+                    <table class="table color-table warning-table">
+                        <thead>
+                            <tr>
+                                <th>Doc Preview</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Document Type</th>
+                                <th>Document Status</th>
+                                <th>Expiration</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let doc of Documents; let i = index">
+                                <td>
+                                    <a data-fancybox="gallery" [href]="doc.document_name | imageUrl:'employers'" [title]="doc.user.name">
+                                        <img width="80" class="img-circle img-thumbnail" [src]="doc.document_name | imageUrl:'employers'" [alt]="doc.user.name">
+                                    </a>
+                                </td>
+                                <td>
+                                    {{ doc.user.name }}
+                                </td>
+                                <td> {{ doc.user.email }} </td>
+                                <td> {{ doc.documentType }} </td>
+                                <td>
+                                    <span [innerHTML]="doc.documentStatus | status:'Approved':'Pending'"></span>
+                                </td>
+                                <td></td>
+                                <td>
+                                    <button (click)="Navigation(doc._id)" class="btn btn-success">
+                                      <i class="mdi mdi-lock"></i>
+                                  </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

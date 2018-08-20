@@ -96,18 +96,25 @@
                             <li>
                                 <div class="message-center">
                                     <!-- Message -->
-                                    <a [routerLink]="['/admin/controls/risk/', r._id]" *ngFor="let r of Risk">
-                                        <div class="btn btn-danger btn-circle"><i class="fa fa-warning"></i></div>
-                                        <div class="mail-contnet">
-                                            <h5>{{ r.car_model.client.name }}</h5>
-                                            <span class="mail-desc"> {{ r.risk_comment }} </span>
-                                            <span class="badge badge-inverse">{{ r.risk_average }}</span>
-                                        </div>
-                                    </a>
+                                    <div *ngIf="displayControlWarning">
+                                        <a [routerLink]="['/admin/controls/risk/', r._id]" *ngFor="let r of Risk">
+                                            <div class="btn btn-danger btn-circle"><i class="fa fa-warning"></i></div>
+                                            <div class="mail-contnet">
+                                                <h5>{{ r.car_model.car_model.client.name }}</h5>
+                                                <span class="mail-desc"> {{ r.risk_comment }} </span>
+                                                <span class="badge badge-inverse">{{ r.risk_average }}</span>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div *ngIf="!displayControlWarning" class="col-md-12">
+                                        <span>There are no recently opened risk controls</span>
+                                    </div>
                                 </div>
                             </li>
                             <li>
-                                <a class="nav-link text-center" href="javascript:void(0);"> <strong>Check all notifications</strong> <i class="fa fa-angle-right"></i> </a>
+                                <a class="nav-link text-center" [routerLink]="['/admin/controls/risk']"> <strong>Check Risk Control Table</strong>
+                                    <i class="fa fa-angle-right"></i>
+                                </a>
                             </li>
                         </ul>
                     </div>

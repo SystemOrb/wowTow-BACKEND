@@ -20,8 +20,8 @@
                         <tbody>
                             <tr *ngFor="let r of Risk; let i = index;">
                                 <td> {{ i+1 }} </td>
-                                <td> {{ r.car_model.client.name }} </td>
-                                <td> {{ r.car_model.client.email }} </td>
+                                <td> {{ r.car_model.car_model.client.name }} </td>
+                                <td> {{ r.car_model.car_model.client.email }} </td>
                                 <td> <span [innerHTML]="r.risk_average | average"></span> </td>
                                 <td> <span [innerHTML]="r.risk_status | status:'Complete':'not Reviewed'"></span> </td>
                                 <td> {{ r.risk_date }} </td>

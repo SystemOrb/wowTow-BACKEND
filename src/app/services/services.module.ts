@@ -5,7 +5,8 @@ import { PaypalService } from './payments/paypal.service';
 import { ClientsService } from './customers/clients.service';
 import { DriversService } from './customers/drivers.service';
 import { RiskService } from './customers/risk.service';
-import { AveragePipe } from './pipes/average.pipe';
+import { ProvidersDocumentsService } from './providers/providers-documents.service';
+import { ExpirationGuard } from './guards/expiration.guard';
 @NgModule({
   imports: [
     CommonModule
@@ -16,7 +17,9 @@ import { AveragePipe } from './pipes/average.pipe';
     PaypalService,
     DriversService,
     ClientsService,
-    RiskService
+    RiskService,
+    ProvidersDocumentsService,
+    ExpirationGuard
   ]
 })
 export class ServicesModule { }

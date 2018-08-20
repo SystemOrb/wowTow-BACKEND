@@ -3,18 +3,18 @@
     <div class="col-lg-4 col-xlg-3 col-md-5">
         <div class="card">
             <div class="card-body">
-                <div class="m-t-30"> <img class="img-circle" width="150">
-                    <h4 class="card-title m-t-10"> {{ Risk.car_model.car_name }} </h4>
+                <div class="m-t-30"> <img [src]="Risk.car_model.car_image | imageUrl" class="img-circle" width="150">
+                    <h4 class="card-title m-t-10"> {{ Risk.car_model.car_model.car_name }} </h4>
                 </div>
             </div>
             <div>
                 <hr> </div>
             <div class="card-body"> <small class="text-muted">Car Colour</small>
-                <h6> {{ Risk.car_model.car_colour }} </h6>
+                <h6> {{ Risk.car_model.car_model.car_colour }} </h6>
                 <small class="text-muted p-t-30 db">Car Plate</small>
-                <h6> {{ Risk.car_model.car_plate }} </h6>
+                <h6> {{ Risk.car_model.car_model.car_plate }} </h6>
                 <small class="text-muted p-t-30 db">Car Model</small>
-                <h6> {{ Risk.car_model.car_model }} </h6>
+                <h6> {{ Risk.car_model.car_model.car_model }} </h6>
             </div>
         </div>
     </div>
@@ -25,15 +25,15 @@
                     <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#settings" role="tab" aria-expanded="true">Client</a> </li>
                 </ul>
                 <div class="m-t-30"> <img src="../../../../assets/images/users/adam.jpg" class="img-circle" width="150">
-                    <h4 class="card-title m-t-10"> {{ Risk.car_model.client.name}} </h4>
+                    <h4 class="card-title m-t-10"> {{ Risk.car_model.car_model.client.name}} </h4>
                 </div>
             </div>
             <div>
             </div>
             <div class="card-body"> <small class="text-muted">Client Email</small>
-                <h6> {{ Risk.car_model.client.email }} </h6>
+                <h6> {{ Risk.car_model.car_model.client.email }} </h6>
                 <small class="text-muted p-t-30 db">Client phone</small>
-                <h6> {{ Risk.car_model.client.phone}} </h6>
+                <h6> {{ Risk.car_model.car_model.client.phone}} </h6>
             </div>
         </div>
     </div>
