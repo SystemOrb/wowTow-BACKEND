@@ -1,0 +1,68 @@
+<div class="row">
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Responsive model</h4>
+                <!-- sample modal content -->
+                <div [ngClass]="{'show-providers-modal': _modal.modalDisplay && 'hide-providers-modal: !_modal.modalDisplay'}" id="responsive-modal" class="modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title">Provider Service Data</h4>
+                                <button (click)="_modal.modalDisplay = false" type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="col-lg-8 col-md-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div *ngFor="let widgets of Documents" class="row">
+                                                <div class="col-sm-6">
+                                                    <h3>100%</h3>
+                                                    <h6 class="card-subtitle"> {{ widgets.documentType }}</h6>
+                                                    <small [innerHTML]="widgets.documentStatus | status:'Active':'Inactive'"></small>
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <div class="progress">
+                                                        <div class="progress-bar bg-success" role="progressbar" style="width: 100%; height: 6px;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <h5 class="h5">
+                                    Required Documents
+                                </h5>
+                                <div class="col-sm-2">
+                                    <span class="badge badge-inverse">DNI | PASSPORT</span>
+                                </div>
+                                <div class="col-sm-2">
+                                    <span class="badge badge-inverse">POLICY</span>
+                                </div>
+                                <div class="col-sm-2">
+                                    <span class="badge badge-inverse">LICENCE</span>
+                                </div>
+                                <!--<form>
+                                    <div class="form-group">
+                                        <label for="recipient-name" class="control-label">Recipient:</label>
+                                        <input type="text" class="form-control" id="recipient-name">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="message-text" class="control-label">Message:</label>
+                                        <textarea class="form-control" id="message-text"></textarea>
+                                    </div>
+                                </form>-->
+                            </div>
+                            <div class="modal-footer">
+                                <button (click)="_modal.modalDisplay = false" type="button" class="btn btn-default waves-effect" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-danger waves-effect waves-light">Save changes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.modal -->
+                <img src="../assets/images/alert/model.png" alt="default" data-toggle="modal" data-target="#responsive-modal" class="model_img img-responsive">
+            </div>
+        </div>
+    </div>
+</div>

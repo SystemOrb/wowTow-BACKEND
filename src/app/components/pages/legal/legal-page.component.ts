@@ -25,7 +25,6 @@ export class LegalPageComponent implements OnInit {
   async ngOnInit() {
     this.Documents = await this.loadProvidersDocs();
     const DocExp: any = await this.getExpiration();
-    console.log(DocExp);
     if (!DocExp || !DocExp.length) {
       this.UpdateExp = false;
     } else {

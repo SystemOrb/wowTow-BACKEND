@@ -20,6 +20,7 @@ import { RiskInfoComponent } from './pages/risk/risk-info.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ImageUrlPipe } from '../services/pipes/image-url.pipe';
 import { LegalPageComponent } from './pages/legal/legal-page.component';
+import { ProvidersComponent } from './shared/modal/providers.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -45,7 +46,8 @@ import { LegalPageComponent } from './pages/legal/legal-page.component';
   StatusPipe,
   ImageUrlPipe,
   RiskInfoComponent,
-  LegalPageComponent
+  LegalPageComponent,
+  ProvidersComponent
 ]
 })
 export class PagesModule { }

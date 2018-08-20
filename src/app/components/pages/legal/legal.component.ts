@@ -14,7 +14,6 @@ export class LegalComponent implements OnInit {
 
   async ngOnInit() {
     this.Documents = await this.loadProvidersDocs();
-    console.log(this.Documents);
   }
   loadProvidersDocs(): Promise<PrivacyDocument[]> {
     return new Promise((resolve, reject) => {

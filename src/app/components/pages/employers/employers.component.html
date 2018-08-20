@@ -1,3 +1,41 @@
-<p>
-  employers works!
-</p>
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">wowTow Service Providers</h4>
+                <h6 class="card-subtitle">Verify if the provider has been loaded all documents for authorization</h6>
+                <div class="table-responsive">
+                    <table class="table color-table warning-table">
+                        <thead>
+                            <tr>
+                                <th>Tow car</th>
+                                <th>Provider Name</th>
+                                <th>Provider Email</th>
+                                <th>Provider Authorization</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let p of Providers">
+                                <td>
+                                    <a data-fancybox="gallery" [href]="p.tow_image | imageUrl:'employers'" [title]="p.driver.driver.name">
+                                        <img width="150" class="img-circle img-thumbnail" [src]="p.tow_image | imageUrl:'employers'" [alt]="p.driver.driver.name">
+                                    </a>
+                                </td>
+                                <td> {{ p.driver.driver.name }} </td>
+                                <td> {{ p.driver.driver.email }} </td>
+                                <td [innerHTML]="p.driver.driver.authorized | status:'AUTHORIZED':'NOT AUTHORIZED'"></td>
+                                <td>
+                                    <button (click)="_modal.modalDisplay = true; _modal.keyUser = p.driver.driver._id;  _modal.modalOpen()" class="btn btn-success">
+                                      <i class="mdi mdi-wallet-travel"></i>
+                                  </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<app-providers></app-providers>

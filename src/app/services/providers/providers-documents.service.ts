@@ -108,4 +108,19 @@ export class ProvidersDocumentsService {
       throw error;
     }
   }
+  getAllDocsByUser(user_id: string) {
+    try {
+      const UrlDocHttp = `${HTTP_SERVICE}admin/documents/provider/${user_id}`;
+      return this._http.get(UrlDocHttp).pipe(
+        map( (legalDoc: any) => {
+          return legalDoc;
+        }),
+        catchError( (err: any) => {
+          return new Observable<string>(err);
+        }),
+      );
+    } catch (error) {
+      throw error;
+    }
+  }
 }

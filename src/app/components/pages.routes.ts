@@ -38,7 +38,7 @@ const routes: Routes = [
          canActivate: [ExpirationGuard], component: LegalPageComponent, data: {title: 'Privacy Document info'}},
     {
         path: 'admin/membership',
-         canActivate: [ExpirationGuard], component: EmployersComponent, data: {title: 'Employers management'}},
+         canActivate: [ExpirationGuard], component: EmployersComponent, data: {title: 'Service Providers management'}},
     {
         path: 'admin/cities',
          component: CitiesComponent, data: {title: 'Cities management'}},

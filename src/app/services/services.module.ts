@@ -7,6 +7,7 @@ import { DriversService } from './customers/drivers.service';
 import { RiskService } from './customers/risk.service';
 import { ProvidersDocumentsService } from './providers/providers-documents.service';
 import { ExpirationGuard } from './guards/expiration.guard';
+import { ModalProvidersService } from './modal/modal-providers.service';
 @NgModule({
   imports: [
     CommonModule
@@ -19,7 +20,8 @@ import { ExpirationGuard } from './guards/expiration.guard';
     ClientsService,
     RiskService,
     ProvidersDocumentsService,
-    ExpirationGuard
+    ExpirationGuard,
+    ModalProvidersService
   ]
 })
 export class ServicesModule { }
