@@ -52,5 +52,17 @@ export class DriversService {
       }),
     );
   }
+  // Authorization
+  AuthorizationProvider(keyUser: string, inputAuth: boolean) {
+    const URL = `${HTTP_SERVICE}admin/employers/membership/provider/${keyUser}`;
+    return this._http.put(URL, {authorized: inputAuth}).pipe(
+      map( (Authorization: any) => {
+        return Authorization;
+      }),
+      catchError( (err: any) => {
+        return new Observable<string>(err);
+      }),
+    );
+  }
 }
 
