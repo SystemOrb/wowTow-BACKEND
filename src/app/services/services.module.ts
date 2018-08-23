@@ -10,6 +10,8 @@ import { PaypalService } from './customers/paypal.service';
 import { StripeService } from './customers/stripe.service';
 import { ZoneMapService } from './cities/zone-map.service';
 import { ZoneCouponService } from './cities/zone-coupon.service';
+import { AdminService } from './auth/admin.service';
+import { AuthorizedGuard } from './guards/authorized.guard';
 @NgModule({
   imports: [
     CommonModule
@@ -25,7 +27,9 @@ import { ZoneCouponService } from './cities/zone-coupon.service';
     PaypalService,
     StripeService,
     ZoneMapService,
-    ZoneCouponService
+    ZoneCouponService,
+    AdminService,
+    AuthorizedGuard
   ]
 })
 export class ServicesModule { }

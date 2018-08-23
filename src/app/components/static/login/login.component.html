@@ -1,3 +1,31 @@
-<p>
-  login works!
-</p>
+<div class="wrapper">
+    <div class="page-header" style="background-image: url('./assets/img/sections/hook-1943675_1920.jpg');">
+        <div class="filter"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-sm-6 ml-auto mr-auto">
+                    <div style="background-color: rgba(250, 213, 25, 0.8)" class="card card-register">
+                        <div class="text-center">
+                            <img width="90" src="../assets/images/logo/Logo.png" alt="wowTow_panel" class="dark-logo" />
+                        </div>
+
+                        <form #formAuth="ngForm" (ngSubmit)="AuthAdmin(formAuth)" ngNativeValidate class="register-form">
+                            <label for="email">Email</label>
+                            <input required type="email" ngModel name="email" class="form-control no-border" placeholder="Email">
+
+                            <label for="password">Password</label>
+                            <input required type="password" ngModel name="password" class="form-control no-border" placeholder="Password">
+                            <button type="submit" class="btn btn-danger btn-block btn-round">Login</button>
+                        </form>
+                        <!--<div class="forgot">
+                            <a href="#paper-kit" class="btn btn-link btn-danger">Forgot password?</a>
+                        </div>-->
+                    </div>
+                </div>
+            </div>
+            <div class="demo-footer text-center">
+                <h6 class="text-light">&copy; {{data | date: 'yyyy'}}, CallCenter made by WowTow Corp</h6>
+            </div>
+        </div>
+    </div>
+</div>

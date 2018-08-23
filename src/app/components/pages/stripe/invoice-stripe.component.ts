@@ -21,7 +21,6 @@ export class InvoiceStripeComponent implements OnInit {
 
   async ngOnInit() {
     this.Transaction = await this.GetAllInvoices();
-    console.log(this.Transaction);
   }
   GetAllInvoices(): Promise<StripeTransactions[] | any> {
     return new Promise((resolve, reject) => {

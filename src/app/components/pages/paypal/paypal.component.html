@@ -8,28 +8,30 @@
                     <table class="table color-table warning-table">
                         <thead>
                             <tr>
-                                <th>Name</th>
-                                <th>Email</th>
-                                <th>Document Type</th>
-                                <th>Document Status</th>
-                                <th>Expiration</th>
+                                <th>Payer Name</th>
+                                <th>Payer Email</th>
+                                <th>Item</th>
+                                <th>Payment Status</th>
+                                <th>Payment Date</th>
                                 <th></th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
+                            <tr *ngFor="let p of PaypalTransactions">
                                 <td>
-
+                                    {{ p.service.payer_name }} {{p.service.lastname}}
                                 </td>
-                                <td> </td>
-                                <td> </td>
+                                <td> {{p.service.payer_email}} </td>
                                 <td>
-                                    <span></span>
+                                    {{ p.service.item_name }}
                                 </td>
-                                <td></td>
+                                <td> <span [innerHTML]="p.service.payment_status | status:'PAYED':'FAILED'"></span> </td>
                                 <td>
-                                    <button class="btn btn-success">
-                                  <i class="mdi mdi-lock"></i>
+                                    {{ p.service.payment_date | date }}
+                                </td>
+                                <td>
+                                    <button (click)="navigateInvoice(p._id)" class="btn btn-success">
+                                  <i class="mdi mdi-access-point"></i>
                               </button>
                                 </td>
                             </tr>

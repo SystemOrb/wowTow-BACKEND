@@ -3,16 +3,18 @@ import { HttpClient } from '@angular/common/http';
 import { HTTP_SERVICE } from '../../config/config.enviroments';
 import { map, catchError } from 'rxjs/internal/operators';
 import { Observable } from 'rxjs';
+import { AdminService } from '../auth/admin.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DriversService {
 
-  constructor(private _http: HttpClient) { }
+  constructor(private _http: HttpClient, private _admin: AdminService) {
+   }
 
   getAllDrivers() {
-    const URL = `${HTTP_SERVICE}admin/employers/membership`;
+    const URL = `${HTTP_SERVICE}admin/employers/membership?token=${this._admin.Token}`;
     try {
       return this._http.get(URL).pipe(
         map( (drivers: any) => {
@@ -27,7 +29,7 @@ export class DriversService {
     }
   }
   getDriverProfile(_key: string) {
-    const URL = `${HTTP_SERVICE}admin/employers/membership/${_key}`;
+    const URL = `${HTTP_SERVICE}admin/employers/membership/${_key}?token=${this._admin.Token}`;
     try {
       return this._http.get(URL).pipe(
         map( (drivers: any) => {
@@ -54,7 +56,7 @@ export class DriversService {
   }
   // Authorization
   AuthorizationProvider(keyUser: string, inputAuth: boolean) {
-    const URL = `${HTTP_SERVICE}admin/employers/membership/provider/${keyUser}`;
+    const URL = `${HTTP_SERVICE}admin/employers/membership/provider/${keyUser}?token=${this._admin.Token}`;
     return this._http.put(URL, {authorized: inputAuth}).pipe(
       map( (Authorization: any) => {
         return Authorization;

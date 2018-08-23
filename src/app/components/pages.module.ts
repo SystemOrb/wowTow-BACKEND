@@ -1,13 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { LoginComponent } from './static/login/login.component';
 import { AdminComponent } from './pages/admin/admin.component';
 import { LegalComponent } from './pages/legal/legal.component';
 import { CitiesComponent } from './pages/cities/cities.component';
 import { RiskComponent } from './pages/risk/risk.component';
 import { PaypalComponent } from './pages/paypal/paypal.component';
 import { StripeComponent } from './pages/stripe/stripe.component';
-import { CouponsComponent } from './pages/cities/coupons/coupons.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { EmployersComponent } from './pages/employers/employers.component';
 import { PagesRoutingModule } from './pages.routes';
@@ -26,6 +24,8 @@ import { ZonemapComponent } from './pages/cities/zonemap.component';
 import { AgmCoreModule } from '@agm/core';
 import { ModalCouponComponent } from './shared/modal/coupons/modal-coupon.component';
 import { RedirectComponent } from './static/redirect/redirect.component';
+import { PaypalInvoiceComponent } from './pages/paypal/paypal-invoice.component';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -37,14 +37,12 @@ import { RedirectComponent } from './static/redirect/redirect.component';
     })
   ],
   declarations: [
-  LoginComponent,
   AdminComponent,
   LegalComponent,
   CitiesComponent,
   RiskComponent,
   PaypalComponent,
   StripeComponent,
-  CouponsComponent,
   DashboardComponent,
   EmployersComponent,
   CustomersComponent,
@@ -59,7 +57,8 @@ import { RedirectComponent } from './static/redirect/redirect.component';
   InvoiceStripeComponent,
   ZonemapComponent,
   ModalCouponComponent,
-  RedirectComponent
+  RedirectComponent,
+  PaypalInvoiceComponent,
 ]
 })
 export class PagesModule { }

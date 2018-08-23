@@ -19,6 +19,7 @@ import { ExpirationGuard } from '../services/guards/expiration.guard';
 import { InvoiceStripeComponent } from './pages/stripe/invoice-stripe.component';
 import { ZonemapComponent } from './pages/cities/zonemap.component';
 import { RedirectComponent } from './static/redirect/redirect.component';
+import { PaypalInvoiceComponent } from './pages/paypal/paypal-invoice.component';
 
 const routes: Routes = [
     {path: 'dashboard', component: DashboardComponent},
@@ -64,6 +65,9 @@ const routes: Routes = [
         path: 'admin/payments/paypal',
          component: PaypalComponent, data: {title: 'Payments with Paypal'}},
          {
+        path: 'admin/payments/paypal/:paypalKey',
+          component: PaypalInvoiceComponent, data: {title: 'Paypal invoice'}},
+    {
         path: 'admin/redirection/:toUrl/:id',
          component: RedirectComponent, data: {title: 'Redirection in a sec'}},
     {

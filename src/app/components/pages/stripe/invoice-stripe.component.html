@@ -54,7 +54,7 @@
                 <div class="col-md-12">
                     <div class="pull-right m-t-30 text-right">
                         <p>Sub - Total amount: ${{Transaction.amount}}</p>
-                        <p>TAX (10%) : {{ 10 | percent:'1' }} </p>
+                        <p>TAX (10%) : ${{ (Transaction.amount*10)/100 }} </p>
                         <hr>
                         <h3><b>Total :</b> ${{ (Transaction.amount*10)/100 + (Transaction.amount) }}
                         </h3>

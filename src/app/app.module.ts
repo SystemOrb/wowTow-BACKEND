@@ -7,19 +7,23 @@ import { APP_ROUTES } from './app.routes';
 import { NotfoundComponent } from './components/static/notfound/notfound.component';
 import { ServicesModule } from './services/services.module';
 import { HttpClientModule } from '@angular/common/http';
+import { LoginComponent } from './components/static/login/login.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     PagesComponent,
-    NotfoundComponent
+    NotfoundComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
     SharedModule,
     APP_ROUTES,
     ServicesModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

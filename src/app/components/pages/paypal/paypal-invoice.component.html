@@ -1,0 +1,66 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="card card-body printableArea">
+            <h3><b>INVOICE</b> <span class="pull-right">Ref: {{ Invoice.service.payment_ref }}</span></h3>
+            <hr>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="pull-left">
+                        <address>
+                          <h3> &nbsp;<b class="text-danger">{{Invoice.service.payer_name}}&nbsp;{{ Invoice.service.payer_lastname }}</b></h3>
+                          <p class="text-muted m-l-5">{{ Invoice.service.payer_email }}
+                              <br> {{ Invoice.payer_address }},
+                              <br> {{ Invoice.payer_city }},
+                              <br> {{ Invoice.payer_country}} - {{ Invoice.payer_postcode }}</p>
+                      </address>
+                    </div>
+                    <div class="pull-right text-right">
+                        <address>
+                          <h3>To,</h3>
+                          <h4 class="font-bold">WowTow Dispatch Software,</h4>
+                          <p class="text-muted m-l-30">Houston Texas,<br>
+                              Payment: <span [innerHTML]="Invoice.service.payment_status | status:'PAYED':'FAILURE'"></span>
+                              <br> {{ Invoice.service.payment_merchant }},
+                          <p class="m-t-30"><b>Invoice Date :</b> <i class="fa fa-calendar"></i> {{ Invoice.service.payment_date | date }}</p>
+                      </address>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="table-responsive m-t-40" style="clear: both;">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Item</th>
+                                    <th class="text-right">Description</th>
+                                    <th class="text-right">Unit Cost</th>
+                                    <th class="text-right">Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>{{ Invoice.service.item_name }}</td>
+                                    <td class="text-right"> {{ Invoice.service.item_description }} </td>
+                                    <td class="text-right"> ${{ Invoice.service.item_price }} </td>
+                                    <td class="text-right"> ${{ Invoice.service.item_price }} </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="pull-right m-t-30 text-right">
+                        <p>TAX (10%): ${{ ((Invoice.service.item_price*10)/100) }} </p>
+                        <hr>
+                        <h3><b>Total :</b> ${{ (Invoice.service.item_price*10)/100 + (Invoice.service.item_price) }}
+                        </h3>
+                    </div>
+                    <div class="clearfix"></div>
+                    <hr>
+                    <div class="text-right">
+                        <button id="print" class="btn btn-default btn-outline" type="button"> <span><i class="fa fa-print"></i> Print</span> </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
