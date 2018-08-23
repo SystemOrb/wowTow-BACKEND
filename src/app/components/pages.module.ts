@@ -21,12 +21,20 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ImageUrlPipe } from '../services/pipes/image-url.pipe';
 import { LegalPageComponent } from './pages/legal/legal-page.component';
 import { ProvidersComponent } from './shared/modal/providers.component';
+import { InvoiceStripeComponent } from './pages/stripe/invoice-stripe.component';
+import { ZonemapComponent } from './pages/cities/zonemap.component';
+import { AgmCoreModule } from '@agm/core';
+import { ModalCouponComponent } from './shared/modal/coupons/modal-coupon.component';
+import { RedirectComponent } from './static/redirect/redirect.component';
 @NgModule({
   imports: [
     CommonModule,
     PagesRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyD_Wa-G_BsewEAJAZSvoNUk95JBSO1F4XU'
+    })
   ],
   declarations: [
   LoginComponent,
@@ -47,7 +55,11 @@ import { ProvidersComponent } from './shared/modal/providers.component';
   ImageUrlPipe,
   RiskInfoComponent,
   LegalPageComponent,
-  ProvidersComponent
+  ProvidersComponent,
+  InvoiceStripeComponent,
+  ZonemapComponent,
+  ModalCouponComponent,
+  RedirectComponent
 ]
 })
 export class PagesModule { }

@@ -1,0 +1,57 @@
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <div class="row pricing-plan">
+                    <!-- col-md-3 col-xs-12 col-sm-6 no-padding -->
+                    <div class="col-md-3 col-xs-12 col-sm-6 no-padding">
+                        <div class="pricing-box featured-plan">
+                            <div class="pricing-body">
+                                <div class="pricing-header">
+                                    <h4 class="price-lable text-white bg-warning">Location</h4>
+                                    <h4 class="text-center">{{ wowTowZone.geozone.formatted_address }}</h4>
+                                    <h2 class="text-center"><span class="price-sign">$</span>{{ wowTowZone.base_rate }}</h2>
+                                    <span [innerHTML]="wowTowZone.status | status:'OPERATIVE':'DISABLED'"></span>
+                                    <!--<p class="uppercase">per month</p>-->
+                                    <div class="col-md-12">
+                                        <br>
+                                        <button (click)="_coupon.ExistsCoupon = true; _coupon.zoneKey = keyZone; dispatchEventCoupon();" class="btn btn-info text-center">
+                                        Add coupon
+                                      </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div *ngIf="zoneCoupon.length" class="col-md-3 col-xs-12 col-sm-6 no-padding">
+                        <div class="pricing-box featured-plan">
+                            <div class="pricing-body">
+                                <div class="pricing-header">
+                                    <h4 class="price-lable text-white bg-warning">Coupon</h4>
+                                    <h4 class="text-center"> ${{ wowTowZone.base_rate }} </h4>
+                                    <h2 class="text-center"><span class="price-sign">-</span>{{ zoneCoupon[0].amount_discount }}%</h2>
+                                    <span> Discount</span>&nbsp;<span class="badge badge-success"> ${{((wowTowZone.base_rate * zoneCoupon[0].amount_discount) / 100) | number}}</span>
+                                    <!--<p class="uppercase">per month</p>-->
+                                    <hr>
+                                    <div class="col-md-12">
+                                        <h4 class="h4 text-center">Total: ${{ (wowTowZone.base_rate) - ((wowTowZone.base_rate * zoneCoupon[0].amount_discount) / 100) | number }}</h4>
+                                        <h5>Start: <i class="mdi mdi-calendar-today"></i>{{ zoneCoupon[0].date_start | date }}</h5>
+                                        <h5>End: <i class="mdi mdi-calendar-clock"></i>{{ zoneCoupon[0].date_end | date }}</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-xs-12 col-sm-6 no-padding">
+                        <!-- this creates a google map on the page with the given lat/lng from -->
+                        <!-- the component as the initial center of the map: -->
+                        <agm-map [latitude]="wowTowZone.geozone.latitude" [longitude]="wowTowZone.geozone.longitude">
+                            <agm-marker [latitude]="wowTowZone.geozone.latitude" [longitude]="wowTowZone.geozone.longitude"></agm-marker>
+                        </agm-map>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<app-modal-coupon></app-modal-coupon>

@@ -1,3 +1,45 @@
-<p>
-  cities works!
-</p>
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">wowTow Operative Zones</h4>
+                <h6 class="card-subtitle">Table with all zones registered for wowtow</h6>
+                <div class="table-responsive">
+                    <table class="table color-table warning-table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Location</th>
+                                <th>Rate</th>
+                                <th>Status</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let zone of Zones; let i = index;">
+                                <td>
+                                    # {{i+1}}
+                                </td>
+
+                                <td>
+                                    {{ zone.geozone.formatted_address }}
+                                </td>
+                                <td>
+                                    ${{ zone.base_rate }}
+                                </td>
+                                <td>
+                                    <span [innerHTML]="zone.status | status:'OPERATIVE':'DISABLED'"></span>
+                                </td>
+                                <td>
+                                    <button (click)="navigateZone(zone._id)" class="btn btn-success">
+                                <i class="mdi mdi-google-maps"></i>
+                            </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

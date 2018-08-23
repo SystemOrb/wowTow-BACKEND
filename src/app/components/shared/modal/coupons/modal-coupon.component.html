@@ -1,0 +1,49 @@
+<div class="row">
+    <div class="col-md-4">
+        <!-- sample modal content -->
+        <div [ngClass]="{'show-providers-modal': _zone.ExistsCoupon && 'hide-providers-modal: !_zone.ExistsCoupon'}" id="responsive-modal" class="modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Coupon configuration</h4>
+                        <button (click)="_zone.ExistsCoupon = false" type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="col-lg-8 col-md-12">
+                            <div class="card">
+                                <div class="col-md-16">
+                                    <form #formCoupon="ngForm" (ngSubmit)="CouponConfiguration(formCoupon)" ngNativeValidate class="form-check-inline">
+                                        <div class="form-group">
+                                            <label for="select" class="control-label">Discount:</label>
+                                            <input required [(ngModel)]="CouponData.amount_discount" type="number" name="amount_discount" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="date_start" class="control-label">Date start</label>
+                                            <input required [(ngModel)]="CouponData.date_start" class="form-control" name="date_start" type="date">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="date_end" class="control-label">Date end</label>
+                                            <input required [(ngModel)]="CouponData.date_end" class="form-control" name="date_end" type="date">
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-sm-12">
+                                                <button type="submit" class="btn btn-success">
+                                                                    Configure Coupon
+                                                    </button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button (click)="_zone.ExistsCoupon = false" type="button" class="btn btn-default waves-effect" data-dismiss="modal">Close</button>
+                        <button (click)="Resfresh();" type="button" class="btn btn-danger waves-effect waves-light">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.modal -->
+    </div>
+</div>

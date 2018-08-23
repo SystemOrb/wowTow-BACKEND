@@ -16,6 +16,9 @@ import { ProfileDriverComponent } from './pages/admin/profile-driver.component';
 import { RiskInfoComponent } from './pages/risk/risk-info.component';
 import { LegalPageComponent } from './pages/legal/legal-page.component';
 import { ExpirationGuard } from '../services/guards/expiration.guard';
+import { InvoiceStripeComponent } from './pages/stripe/invoice-stripe.component';
+import { ZonemapComponent } from './pages/cities/zonemap.component';
+import { RedirectComponent } from './static/redirect/redirect.component';
 
 const routes: Routes = [
     {path: 'dashboard', component: DashboardComponent},
@@ -43,6 +46,9 @@ const routes: Routes = [
         path: 'admin/cities',
          component: CitiesComponent, data: {title: 'Cities management'}},
     {
+        path: 'admin/cities/:zone',
+         component: ZonemapComponent, data: {title: 'Cities management'}},
+    {
         path: 'admin/controls/risk',
          component: RiskComponent, data: {title: 'Controls Risks'}},
     {
@@ -52,8 +58,14 @@ const routes: Routes = [
         path: 'admin/payments/stripe',
          component: StripeComponent, data: {title: 'Payments with stripe'}},
     {
+        path: 'admin/payments/stripe/invoice/:stripeKey',
+         component: InvoiceStripeComponent, data: {title: 'Stripe Invoice'}},
+    {
         path: 'admin/payments/paypal',
          component: PaypalComponent, data: {title: 'Payments with Paypal'}},
+         {
+        path: 'admin/redirection/:toUrl/:id',
+         component: RedirectComponent, data: {title: 'Redirection in a sec'}},
     {
          path: '', pathMatch: 'full',
           redirectTo: '/dashboard' }
