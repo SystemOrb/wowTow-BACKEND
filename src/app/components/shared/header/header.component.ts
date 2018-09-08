@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RiskService } from '../../../services/customers/risk.service';
 import { RiskControl } from '../../../classes/customers/customer.risk.class';
 import { Router } from '@angular/router';
+import { AdminService } from '../../../services/auth/admin.service';
 
 @Component({
   selector: 'app-header',
@@ -11,7 +12,7 @@ import { Router } from '@angular/router';
 export class HeaderComponent implements OnInit {
   public Risk: RiskControl[] | any = [];
   public displayControlWarning: boolean;
-  constructor(private _risk: RiskService) { }
+  constructor(private _risk: RiskService, private _admin: AdminService, private _router: Router) { }
 
   async ngOnInit() {
     this.Risk = await this.UploadTableRisk();
@@ -40,5 +41,11 @@ export class HeaderComponent implements OnInit {
         reject(false);
       }
     });
+  }
+  async Logout() {
+    const logout = await this._admin.clearLocalStorage();
+    if (logout) {
+      this._router.navigate(['/login']);
+    }
   }
 }
