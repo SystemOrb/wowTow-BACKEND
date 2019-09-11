@@ -1,0 +1,47 @@
+<section>
+    <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
+    <div class="row text-center">
+        <div class="col-sm text-center">
+            <form ngNativeValidate #formVehicle="ngForm" (ngSubmit)="SendForm(formVehicle);">
+                <div class="form-group">
+                    <mat-form-field class="w-100" appearance="fill">
+                        <mat-label>Car Type</mat-label>
+                        <mat-select [(ngModel)]="ObjectVehicle.car_type" name="car_type" required placeholder="i.e: Sedan">
+                            <mat-option value="Sedan">Sedan</mat-option>
+                            <mat-option value="Minivan">Minivan</mat-option>
+                            <mat-option value="Suv">Suv</mat-option>
+                            <mat-option value="Wagon">Wagon</mat-option>
+                            <mat-option value="HUV">HUV</mat-option>
+                            <mat-option value="Trucks">Trucks</mat-option>
+                            <mat-option value="Heavy">Heavy - Machinery</mat-option>
+                        </mat-select>
+                        <mat-icon matSuffix>directions_car</mat-icon>
+                        <mat-hint>Select the type of vehicle you want to apply the tax</mat-hint>
+                    </mat-form-field>
+                </div>
+                <div class="form-group">
+                    <mat-form-field class="w-100" appearance="fill">
+                        <mat-label>Car Type</mat-label>
+                        <mat-select [(ngModel)]="ObjectVehicle.car_truck" name="car_truck" required placeholder="i.e: Sedan">
+                            <mat-option value="Hook">Hook & Wheel Lift</mat-option>
+                            <mat-option value="Flatbet">Flatbet</mat-option>
+                        </mat-select>
+                        <mat-icon matSuffix>build</mat-icon>
+                    </mat-form-field>
+                </div>
+                <div class="form-group">
+                    <mat-form-field class="w-100" appearance="fill">
+                        <mat-label>Rate</mat-label>
+                        <input [(ngModel)]="ObjectVehicle.truck_price" name="truck_price" required matInput type="number">
+                        <mat-icon matSuffix>hdr_weak</mat-icon>
+                    </mat-form-field>
+                </div>
+                <div class="form-group">
+                    <button [disabled]="loading" type="submit" mat-raised-button class="btn-block" color="primary">
+                    Add
+                  </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>

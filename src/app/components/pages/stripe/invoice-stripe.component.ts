@@ -11,28 +11,21 @@ import { Subscriber } from 'rxjs';
   styles: []
 })
 export class InvoiceStripeComponent implements OnInit {
-  keyStripe: string;
+  ObjectCharge: any = '';
+  OrderId: string = '';
   Transaction: StripeTransactions | any;
   constructor(private _stripe: StripeService, private _get: ActivatedRoute) {
       this._get.params.subscribe((param: Subscriber<any>): void => {
-        this.keyStripe = param['stripeKey'];
+        this.OrderId = param['stripeKey'];
+      });
+      // Extra param
+      this._get.queryParams.subscribe((extra) => {
+        this.ObjectCharge = JSON.parse(extra.payment);
+        console.log(this.ObjectCharge);
       });
    }
 
   async ngOnInit() {
-    this.Transaction = await this.GetAllInvoices();
+    // this.Transaction = await this.GetAllInvoices();
   }
-  GetAllInvoices(): Promise<StripeTransactions[] | any> {
-    return new Promise((resolve, reject) => {
-      this._stripe.GetInvoiceByKey(this.keyStripe).subscribe(
-        (payments: PartialObserver<any> | any): void => {
-          if (!payments.status) {
-            throw new Error(payments.msg);
-          }
-           resolve(payments.allOrder);
-        }
-      );
-    });
-  }
-
 }

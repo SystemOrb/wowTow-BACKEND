@@ -10,8 +10,8 @@
                     <ul aria-expanded="false" class="collapse">
                         <li><a [routerLink]="['/admin/customers']">Customers</a></li>
                         <li><a [routerLink]="['/admin/drivers']">Service Providers</a></li>
-                        <li><a [routerLink]="['/']">Customers Drivers Rating</a></li>
-                        <li><a [routerLink]="['/admin/controls/risk']">Customers Risk</a></li>
+                        <!--<li><a [routerLink]="['/']">Customers Drivers Rating</a></li>-->
+                        <!--<li><a [routerLink]="['/admin/controls/risk']">Customers Risk</a></li>-->
                     </ul>
                 </li>
                 <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-lock"></i>
@@ -26,11 +26,18 @@
                     <span class="hide-menu">Control Cities</span>
                 </a>
                     <ul aria-expanded="false" class="collapse">
-                        <li>
+                        <!--<li>
                             <a [routerLink]="['/admin/cities']">Cities Rate</a>
+                        </li>-->
+                        <li>
+                            <a [routerLink]="['/admin/services/track']">Services</a>
                         </li>
-
-
+                        <li>
+                            <a [routerLink]="['/admin/system/cars']">Vehicles</a>
+                        </li>
+                        <li>
+                            <a [routerLink]="['/admin/system/fee']">System Prices</a>
+                        </li>
                     </ul>
                 </li>
                 <li> <a class="has-arrow waves-effect waves-dark" href="#" aria-expanded="false"><i class="mdi mdi-credit-card-scan"></i>
@@ -38,16 +45,10 @@
                 </a>
                     <ul aria-expanded="false" class="collapse">
                         <li>
-                            <a [routerLink]="['/admin/payments/stripe']">Credit/Debit cards payments</a>
+                            <a [routerLink]="['/admin/payments/stripe']">Orders</a>
                         </li>
                         <li>
-                            <a [routerLink]="['/admin/payments/paypal']">Paypal Payments</a>
-                        </li>
-                        <li>
-                            <a [routerLink]="['/']">Payments Drivers</a>
-                        </li>
-                        <li>
-                            <a [routerLink]="['/']">Balance</a>
+                            <a [routerLink]="['/']">Bank Analytics</a>
                         </li>
                     </ul>
                 </li>

@@ -20,8 +20,8 @@
                         <tbody>
                             <tr *ngFor="let doc of Documents; let i = index">
                                 <td>
-                                    <a data-fancybox="gallery" [href]="doc.document_name | imageUrl:'employers'" [title]="doc.user.name">
-                                        <img width="80" class="img-circle img-thumbnail" [src]="doc.document_name | imageUrl:'employers'" [alt]="doc.user.name">
+                                    <a data-fancybox="gallery" [href]="doc.document_name" [title]="doc.user.name">
+                                        <img width="80" class="img-circle img-thumbnail" [src]="doc.document_name" [alt]="doc.user.name">
                                     </a>
                                 </td>
                                 <td>
@@ -34,7 +34,7 @@
                                 </td>
                                 <td></td>
                                 <td>
-                                    <button (click)="Navigation(doc._id)" class="btn btn-success">
+                                    <button (click)="Navigation(doc)" class="btn btn-success">
                                       <i class="mdi mdi-lock"></i>
                                   </button>
                                 </td>

@@ -31,7 +31,11 @@ export class LegalComponent implements OnInit {
       }
     });
   }
-  Navigation(_docKey: string) {
-    this._router.navigate([`/admin/documents/${_docKey}`]);
+  Navigation(doc: any) {
+    this._router.navigate([`/admin/documents/${doc._id}`], {
+      queryParams: {
+        docData: JSON.stringify(doc)
+      }
+    });
   }
 }

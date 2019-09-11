@@ -28,7 +28,7 @@ export class ProfileComponent implements OnInit {
     this._customer.getProfileCustomer(this._key).subscribe(
       (profile: any) => {
         if (profile.status) {
-          this.picture = `${HTTP_SERVICE}upload/image/client/${profile.resp[0].car_image}`;
+          this.picture = profile.resp[0].car_image;
           this.client = profile.resp[0].car_model.client;
           this.Car = profile.resp[0].car_model;
           console.log(profile.resp[0]);

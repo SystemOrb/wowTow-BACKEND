@@ -1,0 +1,158 @@
+<section>
+    <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
+    <div class="row text-center">
+        <div class="col-sm text-center">
+            <form ngNativeValidate #formCity="ngForm" (ngSubmit)="SendForm(formCity);">
+                <div class="form-row">
+                    <div class="col-sm">
+                        <mat-form-field class="w-100" appearance="fill">
+                            <mat-label>City</mat-label>
+                            <input [(ngModel)]="ObjectCity.city" required name="city" matInput placeholder="i.e: Houston">
+                            <mat-icon class="material-icons" matSuffix>location_city</mat-icon>
+                            <mat-hint>Place the city where you want to apply these rates</mat-hint>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-sm">
+                        <mat-form-field class="w-100" appearance="fill">
+                            <mat-label>Dispatch Service</mat-label>
+                            <input [(ngModel)]="ObjectCity.dispatch_service" required name="dispatch_service" type="text" matInput>
+                            <mat-icon class="material-icons" matSuffix>build</mat-icon>
+                            <mat-hint>Dispatch fee that you want on this city</mat-hint>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="space-15"></div>
+                <div class="form-row">
+                    <div class="col-sm">
+                        <mat-form-field class="w-100" appearance="fill">
+                            <mat-label>Max Miles Qty</mat-label>
+                            <input [(ngModel)]="ObjectCity.max_miles" required name="max_miles" type="number" matInput placeholder="i.e: 30 Miles">
+                            <mat-icon class="material-icons" matSuffix>streetview</mat-icon>
+                            <mat-hint>Max miles per city after this number is extra miles</mat-hint>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-sm">
+                        <mat-form-field class="w-100" appearance="fill">
+                            <mat-label>Wootow Fee</mat-label>
+                            <input [(ngModel)]="ObjectCity.wootow_fee" required name="wootow_fee" max="100" min="1" type="number" matInput>
+                            <mat-icon class="material-icons" matSuffix>local_atm</mat-icon>
+                            <mat-hint>a random number at 1 to 100 percent to apply the wootow rate in this city</mat-hint>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="space-15"></div>
+                <div class="form-row">
+                    <div class="col-sm">
+                        <mat-form-field class="w-100" appearance="fill">
+                            <mat-label>Charge in the nigth</mat-label>
+                            <input [(ngModel)]="ObjectCity.charge_nigth" required name="charge_nigth" max="100" min="1" type="number" matInput placeholder="i.e: 10 percent">
+                            <mat-icon class="material-icons" matSuffix>nights_stay</mat-icon>
+                            <mat-hint>a random number at 1 to 100 percent to apply the wootow rate in the nigth</mat-hint>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="space-15"></div>
+                <div class="form-group">
+                    <button class="btn-block" [disabled]="loading" color="primary" mat-raised-button type="submit">
+                        Send
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm text-center">
+            <h2 class="text-center h5">
+                Extra miles
+            </h2>
+            <div class="space-15"></div>
+            <form #formExtraMiles="ngForm" ngNativeValidate (ngSubmit)="AddToListForm(formExtraMiles);">
+                <div class="form-row">
+                    <div class="col-sm">
+                        <mat-form-field class="w-100" appearance="fill">
+                            <mat-label>Select an vehicle</mat-label>
+                            <mat-select [disabled]="!LoadList" ngModel required name="car_type">
+                                <mat-option *ngFor="let v of ArrayVehicles" [value]="v._id">{{v.car_type}}&nbsp;{{v.car_truck}}&nbsp;${{v.truck_price}}</mat-option>
+                            </mat-select>
+                            <mat-icon class="material-icons" matSuffix>directions_car</mat-icon>
+                            <mat-hint>Select the vehicle to add a extra miles rate</mat-hint>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-sm">
+                        <mat-form-field class="w-100" appearance="fill">
+                            <mat-label>Rate</mat-label>
+                            <input [disabled]="!LoadList" ngModel required name="extra_miles" type="text" matInput placeholder="i.e: 0.30">
+                            <mat-icon class="material-icons" matSuffix>explore</mat-icon>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="space-15"></div>
+                <div class="form-group">
+                    <button [disabled]="!LoadList" type="submit" mat-raised-button color="primary" class="btn-block">
+                        Add to list&nbsp;
+                        <mat-icon class="material-icons">list</mat-icon>
+                    </button>
+                </div>
+                <fieldset>
+                    <input [(ngModel)]="_idCity" type="hidden" name="city">
+                    <mat-hint>Must complete the before form to fill this</mat-hint>
+                </fieldset>
+            </form>
+            <div class="space-10"></div>
+            <table style="overflow-y: scroll !important" class="w-100 text-center" mat-table [dataSource]="dataSource">
+                <!-- Position Column -->
+                <ng-container matColumnDef="vehicle_type">
+                    <th mat-header-cell *matHeaderCellDef> Vehicle Type. </th>
+                    <td mat-cell *matCellDef="let element">
+                        <mat-hint style="font-weight: bold">
+                            {{element.car_type.car_type}}
+                        </mat-hint>
+                    </td>
+                </ng-container>
+
+                <!-- Name Column -->
+                <ng-container matColumnDef="service_type">
+                    <th mat-header-cell *matHeaderCellDef> Service Type </th>
+                    <td mat-cell *matCellDef="let element">
+                        <mat-hint style="font-weight: bold">
+                            {{element.car_type.car_truck}}
+                        </mat-hint>
+                    </td>
+                </ng-container>
+
+                <!-- Weight Column -->
+                <ng-container matColumnDef="Rate">
+                    <th mat-header-cell *matHeaderCellDef> Rate </th>
+                    <td mat-cell *matCellDef="let element">
+                        <mat-hint style="font-weight: bold">
+                            ${{element.car_type.truck_price}}
+                        </mat-hint>
+                    </td>
+                </ng-container>
+
+                <!-- Symbol Column -->
+                <ng-container matColumnDef="extra_mile">
+                    <th mat-header-cell *matHeaderCellDef> Extra Mile </th>
+                    <td mat-cell *matCellDef="let element">
+                        <mat-hint style="font-weight: bold">
+                            {{element.extra_miles}}
+                        </mat-hint>
+                    </td>
+                </ng-container>
+
+                <!-- action -->
+                <ng-container matColumnDef="action">
+                    <th mat-header-cell *matHeaderCellDef></th>
+                    <td mat-cell *matCellDef="let element; let i = index;">
+                        <button (click)="DeleteFee(element, i);" mat-raised-button color="warn">
+                            <mat-icon class="material-icons">delete</mat-icon>
+                        </button>
+                    </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+        </div>
+    </div>
+</section>

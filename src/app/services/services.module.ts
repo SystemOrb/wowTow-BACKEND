@@ -12,9 +12,12 @@ import { ZoneMapService } from './cities/zone-map.service';
 import { ZoneCouponService } from './cities/zone-coupon.service';
 import { AdminService } from './auth/admin.service';
 import { AuthorizedGuard } from './guards/authorized.guard';
+import { AngularMaterialModule } from '../angular-material.module';
+import { ExcelService } from './system/excel.service';
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    AngularMaterialModule
   ],
   declarations: [],
   providers: [
@@ -29,7 +32,8 @@ import { AuthorizedGuard } from './guards/authorized.guard';
     ZoneMapService,
     ZoneCouponService,
     AdminService,
-    AuthorizedGuard
+    AuthorizedGuard,
+    ExcelService
   ]
 })
 export class ServicesModule { }

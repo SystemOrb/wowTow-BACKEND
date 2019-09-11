@@ -18,8 +18,8 @@
                         <tbody>
                             <tr *ngFor="let p of Providers">
                                 <td>
-                                    <a data-fancybox="gallery" [href]="p.tow_image | imageUrl:'employers'" [title]="p.driver.driver.name">
-                                        <img width="150" class="img-circle img-thumbnail" [src]="p.tow_image | imageUrl:'employers'" [alt]="p.driver.driver.name">
+                                    <a data-fancybox="gallery" [href]="p.driver.driver.profile" [title]="p.driver.driver.name">
+                                        <img width="150" class="img-circle img-thumbnail" [src]="p.driver.driver.profile | noImage:'./assets/images/desktop/no_profile_image.png'" [alt]="p.driver.driver.name">
                                     </a>
                                 </td>
                                 <td> {{ p.driver.driver.name }} </td>

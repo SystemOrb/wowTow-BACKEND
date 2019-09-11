@@ -2,7 +2,7 @@
     <div class="col-12">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title">wowTow Customers Payments with Debit/Credit Card</h4>
+                <h4 class="card-title">Wootow Orders</h4>
                 <h6 class="card-subtitle"></h6>
                 <div class="table-responsive">
                     <table class="table color-table warning-table">
@@ -12,7 +12,7 @@
                                 <th>Email</th>
                                 <th>Card Type</th>
                                 <th>Currency</th>
-                                <th>System Approbation</th>
+                                <th>Payment Status</th>
                                 <th>Amount</th>
                                 <th>Date Payment</th>
                                 <th></th>
@@ -21,20 +21,24 @@
                         <tbody>
                             <tr *ngFor="let stripe of Transactions">
                                 <td>
-                                    {{ stripe.client.client.name }}
+                                    {{ stripe.charge.billing_details.name }}
                                 </td>
-                                <td> {{ stripe.client.client.email }} </td>
-                                <td> {{ stripe.card_type }} </td>
+                                <td> {{ stripe.customer.email }} </td>
+                                <td> {{ stripe.charge.payment_method_details.card.brand }} </td>
                                 <td>
-                                    <span [innerText]="stripe.currency" class="text-uppercase badge badge-inverse font-weight-bold"></span>
+                                    <span [innerText]="stripe.charge.currency" class="text-uppercase badge badge-inverse font-weight-bold"></span>
                                 </td>
                                 <td>
-                                    <span [innerHTML]="stripe.payment_status | status:'PAYED':'Payment Error'"></span>
+                                    <mat-chip-list [ngSwitch]="stripe.tracking">
+                                        <mat-chip selected *ngSwitchCase="'pending'">On Hold</mat-chip>
+                                        <mat-chip selected *ngSwitchCase="'canceled'">Refunded</mat-chip>
+                                        <mat-chip *ngSwitchDefault selected>Paid</mat-chip>
+                                    </mat-chip-list>
                                 </td>
-                                <td> {{ stripe.amount }} <span class="text-uppercase"> {{stripe.currency}}</span></td>
-                                <td> {{ stripe.create | date }} </td>
+                                <td> ${{ stripe.prices.Service }}</td>
+                                <td> {{ stripe.charge.created | date }} </td>
                                 <td>
-                                    <button (click)="navigateInvoice(stripe._id)" class="btn btn-success">
+                                    <button (click)="navigateInvoice(stripe)" class="btn btn-success">
                                     <i class="mdi mdi-credit-card-scan"></i>
                                 </button>
                                 </td>

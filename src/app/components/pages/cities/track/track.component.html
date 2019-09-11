@@ -1,0 +1,52 @@
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">wootow Tracking Services</h4>
+                <h6 class="card-subtitle">Display all services and current tracking</h6>
+                <div class="table-responsive">
+                    <table class="table color-table warning-table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Customer</th>
+                                <th>Provider</th>
+                                <th>From</th>
+                                <th>To</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody *ngFor="let track of HistoryServices">
+                            <tr>
+                                <td>#{{track.key}}</td>
+                                <td>{{track.customer.name}}</td>
+                                <td>{{track.provider.name}}</td>
+                                <td>{{track.places.origin.text}}</td>
+                                <td>{{track.places.destiny.text}}</td>
+                                <td>
+                                    <mat-chip-list [ngSwitch]="track.tracking">
+                                        <mat-chip *ngSwitchCase="'complete'" color="primary" selected>
+                                            Complete
+                                        </mat-chip>
+                                        <mat-chip *ngSwitchCase="'engaged'" color="accent" selected>On course</mat-chip>
+                                        <mat-chip *ngSwitchCase="'pending'" color="warn" selected>Recent Opened</mat-chip>
+                                        <mat-chip *ngSwitchCase="'onDrivingToCustomer'" color="primary">Taked recently</mat-chip>
+                                        <mat-chip *ngSwitchCase="'canceled'" color="warn">Canceled</mat-chip>
+                                    </mat-chip-list>
+                                </td>
+                                <td>
+                                    <button (click)="OpenReference(track);" type="button" mat-raised-button color="primary">
+                                    <mat-icon class="material-icons">
+                                        desktop_windows
+                                    </mat-icon>
+                                  </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

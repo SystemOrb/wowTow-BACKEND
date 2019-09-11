@@ -12,18 +12,22 @@ import * as moment from 'moment';
   styles: []
 })
 export class LegalPageComponent implements OnInit {
-  Documents: PrivacyDocument | any;
+  Documents: any = '';
   DocExpiration: DocumentExpiration | any;
   docKey: string;
   UpdateExp: boolean;
   UpdateDate: Date;
   constructor(private _docPartial: ProvidersDocumentsService, private _get: ActivatedRoute) {
-    this._get.params.subscribe(
-      (doc: Params): void => this.docKey = doc['docKey']);
+      this._get.queryParams.subscribe(
+        (data) => {
+          this.Documents = JSON.parse(data.docData);
+          this.docKey = this.Documents._id;
+          console.log(this.Documents);
+        }
+      );
    }
 
   async ngOnInit() {
-    this.Documents = await this.loadProvidersDocs();
     const DocExp: any = await this.getExpiration();
     if (!DocExp || !DocExp.length) {
       this.UpdateExp = false;

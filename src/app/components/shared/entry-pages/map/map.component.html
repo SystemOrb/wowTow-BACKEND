@@ -1,0 +1,180 @@
+<div class="row">
+    <div class="col-sm text-center">
+        <mat-card style="border: 0px">
+            <mat-card-header>
+                <img class="w-75 text-center" mat-card-image [src]="StaticMap" [alt]="ObjectService.places.origin.text">
+            </mat-card-header>
+            <mat-card-content>
+                <div class="row text-center">
+                    <div class="col">
+                        <mat-card>
+                            <mat-card-header class="text-center offset-1">
+                                <div *ngIf="ObjectService.customer.picture" mat-card-avatar [ngStyle]="{'background-image':'url(' + ObjectService.customer.picture + '.jpg)', 'background-size': 'cover'}"></div>
+                                <div *ngIf="!ObjectService.customer.picture" mat-card-avatar style="background-image: url(./assets/images/no_profile_image.png); background-size: cover"></div>
+                                <mat-card-title>
+                                    {{ObjectService.customer.name}}
+                                </mat-card-title>
+                                <mat-card-subtitle>
+                                    <mat-hint>
+                                        <span class="badge badge-inverse">
+                                        Customer
+                                      </span>
+                                    </mat-hint>
+                                </mat-card-subtitle>
+                            </mat-card-header>
+                            <mat-card-content class="text-left">
+                                <mat-list>
+                                    <mat-list-item>
+                                        <mat-hint>
+                                            <mat-chip>
+                                                <mat-icon class="material-icons">contact_mail</mat-icon>Email:</mat-chip>
+                                        </mat-hint>&nbsp;
+                                        <mat-hint class="font-12">{{ObjectService.customer.email}}</mat-hint>
+                                    </mat-list-item>
+                                    <mat-list-item>
+                                        <mat-hint>
+                                            <mat-chip>
+                                                <mat-icon class="material-icons">phone</mat-icon>Phone:</mat-chip>
+                                        </mat-hint>&nbsp;
+                                        <mat-hint class="font-12">{{ObjectService.customer.phone}}</mat-hint>
+                                    </mat-list-item>
+                                    <mat-list-item>
+                                        <mat-hint>
+                                            <mat-chip>
+                                                <mat-icon class="material-icons">notification_important</mat-icon>API:</mat-chip>
+                                        </mat-hint>&nbsp;
+                                        <mat-hint class="font-12">{{ObjectService.customer.AppPlayerId}}</mat-hint>
+                                    </mat-list-item>
+                                    <mat-list-item>
+                                        <mat-hint>
+                                            <mat-chip>
+                                                <mat-icon class="material-icons">room</mat-icon>From:</mat-chip>
+                                        </mat-hint>&nbsp;
+                                        <mat-hint class="font-12">{{ObjectService.places.origin.text}}</mat-hint>
+                                    </mat-list-item>
+                                    <mat-list-item>
+                                        <mat-hint>
+                                            <mat-chip>
+                                                <mat-icon class="material-icons">directions_car</mat-icon>Vehicle:</mat-chip>
+                                        </mat-hint>&nbsp;
+                                        <mat-hint class="font-12">
+                                            {{ObjectService.pay.vehicle.car_model.car_name}} - {{ObjectService.pay.vehicle.car_model.car_plate}} - {{ObjectService.pay.vehicle.car_model.car_colour}}
+                                        </mat-hint>
+                                    </mat-list-item>
+                                </mat-list>
+                            </mat-card-content>
+                        </mat-card>
+                    </div>
+                    <div class="col">
+                        <mat-card *ngIf="ObjectService.provider">
+                            <mat-card-header class="text-center offset-1">
+                                <div *ngIf="ObjectService.provider.profile" mat-card-avatar [ngStyle]="{'background-image':'url(' + ObjectService.provider.profile + '.jpg)', 'background-size': 'cover'}"></div>
+                                <div *ngIf="!ObjectService.provider.profile" mat-card-avatar style="background-image: url(./assets/images/no_profile_image.png); background-size: cover"></div>
+                                <mat-card-title>
+                                    {{ObjectService.provider.name}}
+                                </mat-card-title>
+                                <mat-card-subtitle>
+                                    <mat-hint>
+                                        <span class="badge badge-inverse">
+                                        Wootow Provider
+                                      </span>
+                                    </mat-hint>
+                                </mat-card-subtitle>
+                            </mat-card-header>
+                            <mat-card-content class="text-left">
+                                <mat-list>
+                                    <mat-list-item>
+                                        <mat-hint>
+                                            <mat-chip>
+                                                <mat-icon class="material-icons">contact_mail</mat-icon>Email:</mat-chip>
+                                        </mat-hint>&nbsp;
+                                        <mat-hint class="font-12">{{ObjectService.provider.email}}</mat-hint>
+                                    </mat-list-item>
+                                    <mat-list-item>
+                                        <mat-hint>
+                                            <mat-chip>
+                                                <mat-icon class="material-icons">phone</mat-icon>Phone:</mat-chip>
+                                        </mat-hint>&nbsp;
+                                        <mat-hint class="font-12">{{ObjectService.provider.phone}}</mat-hint>
+                                    </mat-list-item>
+                                    <mat-list-item>
+                                        <mat-hint>
+                                            <mat-chip>
+                                                <mat-icon class="material-icons">notification_important</mat-icon>API:</mat-chip>
+                                        </mat-hint>&nbsp;
+                                        <mat-hint class="font-12">{{ObjectService.provider.AppPlayerId}}</mat-hint>
+                                    </mat-list-item>
+                                    <mat-list-item>
+                                        <mat-hint>
+                                            <mat-chip>
+                                                <mat-icon class="material-icons">room</mat-icon>Taken From:</mat-chip>
+                                        </mat-hint>&nbsp;
+                                        <mat-hint class="font-12">{{ObjectService.provider.currentLat}} - {{ObjectService.provider.currentLng}} </mat-hint>
+                                    </mat-list-item>
+                                    <mat-list-item>
+                                        <mat-hint>
+                                            <mat-chip>
+                                                <mat-icon class="material-icons">how_to_reg</mat-icon>Authorization:</mat-chip>
+                                        </mat-hint>&nbsp;
+                                        <mat-hint [ngSwitch]="ObjectService.provider.authorized">
+                                            <span *ngSwitchCase="true" class="badge badge-success">Approved</span>
+                                            <span *ngSwitchCase="false" class="badge badge-danger">Rejected</span>
+                                        </mat-hint>
+                                    </mat-list-item>
+                                </mat-list>
+                            </mat-card-content>
+                        </mat-card>
+                    </div>
+                    <div class="col">
+                        <mat-card>
+                            <mat-card-header class="text-center offset-1">
+                                <mat-card-title>
+                                    Service Fee
+                                </mat-card-title>
+                            </mat-card-header>
+                            <mat-card-content class="text-left">
+                                <mat-list>
+                                    <mat-list-item>
+                                        <mat-hint>
+                                            <mat-chip>
+                                                <mat-icon class="material-icons">streetview</mat-icon>Miles:</mat-chip>
+                                        </mat-hint>&nbsp;
+                                        <mat-hint class="font-12">{{ObjectService.prices.Miles}}</mat-hint>
+                                    </mat-list-item>
+                                    <mat-list-item>
+                                        <mat-hint>
+                                            <mat-chip>
+                                                <mat-icon class="material-icons">streetview</mat-icon>Extra Miles:</mat-chip>
+                                        </mat-hint>&nbsp;
+                                        <mat-hint class="font-12">{{ObjectService.prices.ExtraMiles}}</mat-hint>
+                                    </mat-list-item>
+                                    <mat-list-item>
+                                        <mat-hint>
+                                            <mat-chip>
+                                                <mat-icon class="material-icons">monetization_on</mat-icon>Provider Fee:</mat-chip>
+                                        </mat-hint>&nbsp;
+                                        <mat-hint class="font-12">${{ObjectService.prices.Provider}}</mat-hint>
+                                    </mat-list-item>
+                                    <mat-list-item>
+                                        <mat-hint>
+                                            <mat-chip>
+                                                <mat-icon class="material-icons">monetization_on</mat-icon>Service:</mat-chip>
+                                        </mat-hint>&nbsp;
+                                        <mat-hint class="font-12">${{ObjectService.prices.Service}} </mat-hint>
+                                    </mat-list-item>
+                                    <mat-list-item>
+                                        <mat-hint>
+                                            <mat-chip>
+                                                <mat-icon class="material-icons">monetization_on</mat-icon>Wootow Fee:</mat-chip>
+                                        </mat-hint>&nbsp;
+                                        <mat-hint class="font-12">${{ObjectService.prices.WooTow}} </mat-hint>
+                                    </mat-list-item>
+                                </mat-list>
+                            </mat-card-content>
+                        </mat-card>
+                    </div>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>

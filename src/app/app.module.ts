@@ -10,6 +10,17 @@ import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './components/static/login/login.component';
 import { FormsModule } from '@angular/forms';
 
+// Firebase
+import { AngularFireModule } from '@angular/fire';
+import { environment } from '../environments/environment';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+import { AngularFireDatabaseModule, AngularFireDatabase } from '@angular/fire/database';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+
+// Material
+import { AngularMaterialModule } from './angular-material.module';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,9 +34,17 @@ import { FormsModule } from '@angular/forms';
     APP_ROUTES,
     ServicesModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    AngularMaterialModule,
+    AngularFireModule.initializeApp(environment.firebase, 'WootowBackend'),
+    AngularFireStorageModule,
+    AngularFireDatabaseModule,
+    AngularFireAuthModule,
+    BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [
+    AngularFireDatabase
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

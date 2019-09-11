@@ -21,6 +21,7 @@ export class EmployersComponent implements OnInit {
     return new Promise((resolve, reject) => {
       this._providers.getAllDrivers().subscribe(
         (ServiceProviders: PartialObserver<any> | any) => {
+          console.log(ServiceProviders);
           if (ServiceProviders.status) {
             resolve(ServiceProviders.resp);
           }

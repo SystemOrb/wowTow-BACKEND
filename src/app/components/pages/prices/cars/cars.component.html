@@ -1,0 +1,59 @@
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">wooTow vehicles</h4>
+                <h6 class="card-subtitle">Cars duty database</h6>
+                <button (click)="OpenPageVehicles();" style="float: right;" mat-fab color="primary">
+                  <mat-icon class="material-icons">library_add</mat-icon>
+                </button>
+                <div class="space-10"></div>
+                <div class="table-responsive">
+                    <table class="table color-table warning-table">
+                        <thead>
+                            <tr>
+                                <th>Car Type</th>
+                                <th>Hook Type</th>
+                                <th>Rate</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let c of CarsSystemArray; let i = index;">
+                                <td>
+                                    <mat-chip-list>
+                                        <mat-chip class="font-14" selected>
+                                            {{c.car_type}}
+                                        </mat-chip>
+                                    </mat-chip-list>
+                                </td>
+                                <td>
+                                    <mat-chip-list>
+                                        <mat-chip color="warn" class="font-14" selected>
+                                            {{c.car_truck}}
+                                        </mat-chip>
+                                    </mat-chip-list>
+                                </td>
+                                <td>
+                                    <mat-chip-list>
+                                        <mat-chip class="font-14" selected>
+                                            ${{c.truck_price}}
+                                        </mat-chip>
+                                    </mat-chip-list>
+                                </td>
+                                <td>
+                                    <button (click)="OpenPageVehicles(c);" mat-raised-button selected>
+                                  <mat-icon class="material-icons">edit</mat-icon>
+                                </button>&nbsp;
+                                    <button (click)="DeleteItem(c, i);" mat-raised-button selected color="warn">
+                                    <mat-icon class="material-icons">delete</mat-icon>
+                                  </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

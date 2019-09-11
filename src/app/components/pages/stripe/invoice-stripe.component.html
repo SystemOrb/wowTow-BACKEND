@@ -1,17 +1,17 @@
 <div class="row">
     <div class="col-md-12">
         <div class="card card-body printableArea">
-            <h3><b>INVOICE</b> <span class="pull-right">Ref: {{ Transaction.transaction_ref }} </span></h3>
+            <h3><b>INVOICE</b> <span class="pull-right">Ref: {{ ObjectCharge.charge.id }} </span></h3>
             <hr>
             <div class="row">
                 <div class="col-md-12">
                     <div class="pull-left">
                         <address>
-                          <h3> &nbsp;<b class="text-danger"> {{ Transaction.client.client.name}} </b></h3>
-                          <p class="text-muted m-l-5">{{ Transaction.client.client.email }}
-                              <br> 0123123123,
-                              <br> {{Transaction.client.car_name}},
-                              <br> {{ Transaction.client.car_plate }} </p>
+                          <h3> &nbsp;<b class="text-danger"> {{ ObjectCharge.customer.name}} </b></h3>
+                          <p class="text-muted m-l-5">{{ ObjectCharge.customer.email}}
+                              <br> {{ObjectCharge.customer.phone}},
+                              <br> {{ObjectCharge.pay.vehicle.car_model.car_name}},
+                              <br> {{ ObjectCharge.pay.vehicle.car_model.car_plate }} </p>
                       </address>
                     </div>
                     <div class="pull-right text-right">
@@ -19,15 +19,16 @@
                           <h3>To,</h3>
                           <h4 class="font-bold">WowTow Dispatch Software</h4>
                           <p class="text-muted m-l-30">Houston, Texas, EE. UU.
-                              <br> Payment status: <span [innerText]="Transaction.payment_status" class="badge badge-info"></span>,
-                              <br> Payment System Approbation:&nbsp;
-                              <span [innerHTML]="Transaction.payment_system | status:'APPROVED':'FAILURE'"></span>,
-                              <br> Card: <span class="badge badge-info">{{ Transaction.card_type }}</span>
-                              <br> Dispute: 
-                              <span *ngIf="Transaction.dispute" class="badge badge-danger">{{ Transaction.dispute }}</span>
-                              <span *ngIf="!Transaction.dispute" class="badge badge-success">ALL DONE</span>
+                              <br> Payment status: 
+                                <span [ngSwitch]="ObjectCharge.tracking">
+                                <mat-chip selected *ngSwitchCase="'pending'">On Hold</mat-chip>
+                                <mat-chip selected *ngSwitchCase="'canceled'">Refunded</mat-chip>
+                                <mat-chip *ngSwitchDefault selected>Paid</mat-chip>
+                                </span>,
+                              <br> Card: <span class="badge badge-info">{{ ObjectCharge.charge.payment_method_details.card.brand }}</span>
+                              <br> Serial: <mat-chip selected>{{ObjectCharge.charge.payment_method_details.card.fingerprint}}</mat-chip>
                             </p>
-                          <p class="m-t-30"><b>Invoice Date :</b> <i class="fa fa-calendar"></i> {{ Transaction.create | date }}</p>
+                          <p class="m-t-30"><b>Invoice Date :</b> <i class="fa fa-calendar"></i> {{ ObjectCharge.charge.created | date }}</p>
                       </address>
                     </div>
                 </div>
@@ -43,9 +44,9 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td> {{ Transaction.payment_description }} </td>
-                                    <td class="text-right"> {{ Transaction.currency }} </td>
-                                    <td class="text-right"> {{ Transaction.amount }} </td>
+                                    <td> {{ ObjectCharge.charge.description }} </td>
+                                    <td class="text-right text-uppercase"> {{ ObjectCharge.charge.currency }} </td>
+                                    <td class="text-right"> {{ ObjectCharge.prices.Service }} </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -53,16 +54,20 @@
                 </div>
                 <div class="col-md-12">
                     <div class="pull-right m-t-30 text-right">
-                        <p>Sub - Total amount: ${{Transaction.amount}}</p>
-                        <p>TAX (10%) : ${{ (Transaction.amount*10)/100 }} </p>
+                        <p>Sub - Total amount: ${{ObjectCharge.prices.Service}}</p>
+                        <p>TAX (10%) : ${{ (ObjectCharge.prices.Service*10)/100 }} </p>
                         <hr>
-                        <h3><b>Total :</b> ${{ (Transaction.amount*10)/100 + (Transaction.amount) }}
+                        <h3><b>Total :</b> ${{ (ObjectCharge.prices.Service*10)/100 + (ObjectCharge.prices.Service) }}
                         </h3>
                     </div>
                     <div class="clearfix"></div>
                     <hr>
                     <div class="text-right">
-                        <button id="print" class="btn btn-default btn-outline" type="button"> <span><i class="fa fa-print"></i> Print</span> </button>
+                        <a id="print" class="btn btn-default btn-outline" [href]="ObjectCharge.charge.receipt_url" target="_blank">
+                            <span>
+                                <i class="fa fa-eye"></i>
+                            </span>
+                        </a>
                     </div>
                 </div>
             </div>

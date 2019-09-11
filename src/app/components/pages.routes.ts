@@ -20,6 +20,9 @@ import { InvoiceStripeComponent } from './pages/stripe/invoice-stripe.component'
 import { ZonemapComponent } from './pages/cities/zonemap.component';
 import { RedirectComponent } from './static/redirect/redirect.component';
 import { PaypalInvoiceComponent } from './pages/paypal/paypal-invoice.component';
+import { TrackComponent } from './pages/cities/track/track.component';
+import { CarsComponent } from './pages/prices/cars/cars.component';
+import { SystemFeeComponent } from './pages/prices/system-fee/system-fee.component';
 
 const routes: Routes = [
     {path: 'dashboard', component: DashboardComponent},
@@ -47,6 +50,17 @@ const routes: Routes = [
         path: 'admin/cities',
          component: CitiesComponent, data: {title: 'Cities management'}},
     {
+        path: 'admin/services/track',
+        component: TrackComponent, data: {title: 'Track Services'}},
+    {
+        path: 'admin/system/cars',
+        component: CarsComponent, data: {title: 'Database vehicles'}
+    },
+    {
+        path: 'admin/system/fee',
+        component: SystemFeeComponent, data: {title: 'Wootow Prices System'}
+    },
+    {
         path: 'admin/cities/:zone',
          component: ZonemapComponent, data: {title: 'Cities management'}},
     {
@@ -57,7 +71,7 @@ const routes: Routes = [
          component: RiskInfoComponent, data: {title: 'Control Risk'}},
     {
         path: 'admin/payments/stripe',
-         component: StripeComponent, data: {title: 'Payments with stripe'}},
+         component: StripeComponent, data: {title: 'Orders'}},
     {
         path: 'admin/payments/stripe/invoice/:stripeKey',
          component: InvoiceStripeComponent, data: {title: 'Stripe Invoice'}},

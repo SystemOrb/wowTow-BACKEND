@@ -25,6 +25,12 @@ import { AgmCoreModule } from '@agm/core';
 import { ModalCouponComponent } from './shared/modal/coupons/modal-coupon.component';
 import { RedirectComponent } from './static/redirect/redirect.component';
 import { PaypalInvoiceComponent } from './pages/paypal/paypal-invoice.component';
+import { TrackComponent } from './pages/cities/track/track.component';
+import { AngularMaterialModule } from '../angular-material.module';
+import { NoImagePipe } from '../services/pipes/no-image.pipe';
+import { SharedModule } from './shared/shared.module';
+import { CarsComponent } from './pages/prices/cars/cars.component';
+import { SystemFeeComponent } from './pages/prices/system-fee/system-fee.component';
 
 @NgModule({
   imports: [
@@ -32,6 +38,8 @@ import { PaypalInvoiceComponent } from './pages/paypal/paypal-invoice.component'
     PagesRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    AngularMaterialModule,
+    SharedModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyD_Wa-G_BsewEAJAZSvoNUk95JBSO1F4XU'
     })
@@ -59,6 +67,9 @@ import { PaypalInvoiceComponent } from './pages/paypal/paypal-invoice.component'
   ModalCouponComponent,
   RedirectComponent,
   PaypalInvoiceComponent,
+  TrackComponent,
+  CarsComponent,
+  SystemFeeComponent
 ]
 })
 export class PagesModule { }

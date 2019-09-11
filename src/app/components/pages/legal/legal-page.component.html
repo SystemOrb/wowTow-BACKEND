@@ -4,8 +4,8 @@
         <div class="card">
             <div class="card-body">
                 <div class="m-t-30">
-                    <a data-fancybox="gallery" [href]="Documents.document_name | imageUrl:'employers'" [title]="Documents.user.name">
-                        <img width="150" class="img-circle img-thumbnail" [src]="Documents.document_name | imageUrl:'employers'" [alt]="Documents.user.name">
+                    <a data-fancybox="gallery" [href]="Documents.document_name" [title]="Documents.user.name">
+                        <img width="150" class="img-circle img-thumbnail" [src]="Documents.document_name" [alt]="Documents.user.name">
                     </a>
                     <h4 class="card-title m-t-10">Document: <span [innerText]="Documents.documentType" class="badge badge-success"></span> </h4>
                 </div>
@@ -23,16 +23,17 @@
                 <ul class="nav nav-tabs profile-tab" role="tablist">
                     <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#settings" role="tab" aria-expanded="true">Service Provider</a> </li>
                 </ul>
-                <div class="m-t-30"> <img src="./assets/images/users/adam.jpg" class="img-circle" width="150">
+                <div class="m-t-30">
+                    <img [alt]="Documents.user.name" [src]="Documents.user.profile | noImage: './assets/images/desktop/no_profile_image.png'" class="img-circle" width="150">
                     <h4 class="card-title m-t-10"> {{ Documents.user.name }} </h4>
                 </div>
             </div>
             <div>
             </div>
-            <div class="card-body"> <small class="text-muted">Client Email</small>
+            <div class="card-body"> <small class="text-muted">Provider Email</small>
                 <h6> {{ Documents.user.email }} </h6>
-                <small class="text-muted p-t-30 db">Client phone</small>
-                <h6> </h6>
+                <small class="text-muted p-t-30 db">Provider phone</small>
+                <h6>{{Documents.user.phone}}</h6>
             </div>
         </div>
     </div>

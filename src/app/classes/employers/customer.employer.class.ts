@@ -5,6 +5,7 @@ export class Employer {
         public email: string,
         public status?: boolean,
         public working?: boolean,
-        public authorized?: boolean
+        public authorized?: boolean,
+        public profile?: string
     ) {}
 }
